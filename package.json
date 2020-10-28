@@ -19,6 +19,7 @@
     "nodemon": "^2.0.6",
     "pino-pretty": "^4.3.0",
     "prettier": "^2.1.2",
-    "tsconfig-paths": "^3.9.0"
+    "tsconfig-paths": "^3.9.0",
+    "type-graphql": "^1.1.0"
   }
 }
