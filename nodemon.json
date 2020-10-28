@@ -1,5 +1,5 @@
 {
   "watch": ["server.ts", "src"],
   "ext": "ts,tsx",
-  "exec": "ts-node server.ts"
+  "exec": "yarn start"
 }
