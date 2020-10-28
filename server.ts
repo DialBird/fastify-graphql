@@ -1,20 +1,18 @@
-import _fastify from 'fastify'
+import fastify from 'fastify'
 
 import { graphqlApp } from 'src/graphql'
 
-const fastify = _fastify({
-  logger: true,
+const app = fastify({
+  logger: { prettyPrint: true, level: 'debug' },
 })
 
-fastify.get('/', async () => 'ok')
+app.get('/', async () => 'ok')
 
-fastify.register(graphqlApp, { prefix: '/graphql', useSubscription: true })
+app.register(graphqlApp, { prefix: '/graphql', useSubscription: true })
 
-fastify.listen(3000, (err, address) => {
+app.listen(3000, (err) => {
   if (err) {
-    fastify.log.error(err)
+    app.log.error(err)
     process.exit(1)
   }
-
-  fastify.log.info(`server listening on ${address}`)
 })
