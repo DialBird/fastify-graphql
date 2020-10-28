@@ -1,14 +1,16 @@
 import _fastify from 'fastify'
 
+import { graphqlApp } from 'src/graphql'
+
 const fastify = _fastify({
   logger: true,
 })
 
-fastify.get('/', (_request, reply) => {
-  reply.send({ hello: 'world' })
-})
+fastify.get('/', async () => 'ok')
 
-fastify.listen(3003, (err, address) => {
+fastify.register(graphqlApp, { prefix: '/graphql', useSubscription: true })
+
+fastify.listen(3000, (err, address) => {
   if (err) {
     fastify.log.error(err)
     process.exit(1)
