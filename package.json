@@ -9,5 +9,8 @@
   "license": "ISC",
   "dependencies": {
     "fastify": "^3.7.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
   }
 }
