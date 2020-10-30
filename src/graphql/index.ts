@@ -14,5 +14,22 @@ export const graphqlApp: FastifyPluginAsync<GraphQLAppOption> = async (
   { useSubscription }: GraphQLAppOption,
 ) => {
   console.log(useSubscription)
+
+  const schema = await buildSchema({
+    resolvers: [QueryResolver, MutationResolver],
+    emitSchemaFile: true,
+  })
+  app.post<{ Body: { query: string; variables?: object } }>(
+    '/',
+    async (request, reply) => {
+      const res = await graphql({
+        schema,
+        source: request.body.query,
+        variableValues: request.body.variables,
+      })
+      reply.send(res)
+    },
+  )
+
   app.get('/', async () => 'graphql')
 }
