@@ -1,5 +1,4 @@
 import fastify from 'fastify'
-
 import { graphqlApp } from 'src/graphql'
 
 const app = fastify({

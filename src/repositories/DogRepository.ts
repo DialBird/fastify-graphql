@@ -1,5 +1,5 @@
-import { database } from 'src/services/DatabaseService'
 import { DogType } from 'src/graphql/types/DogType'
+import { database } from 'src/services/DatabaseService'
 
 export class DogRepository {
   async getByUserId(userId: number) {

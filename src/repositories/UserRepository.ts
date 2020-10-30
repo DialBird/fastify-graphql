@@ -1,5 +1,5 @@
-import { database } from 'src/services/DatabaseService'
 import { UserType } from 'src/graphql/types/UserType'
+import { database } from 'src/services/DatabaseService'
 
 export class UserRepository {
   async find(id: number) {
