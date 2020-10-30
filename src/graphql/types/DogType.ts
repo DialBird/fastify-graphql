@@ -6,7 +6,7 @@ export class DogType {
   id!: number
 
   @Field()
-  userId!: number
+  user_id!: number
 
   @Field()
   name!: string

@@ -11,7 +11,7 @@ scalar DateTime
 type DogType {
   id: ID!
   name: String!
-  userId: Float!
+  user_id: Float!
 }
 
 type Query {
@@ -23,6 +23,6 @@ type UserType {
   birthday: DateTime
   dogs: [DogType!]!
   id: ID!
-  isHappy: Boolean!
+  is_happy: Boolean!
   name: String!
 }

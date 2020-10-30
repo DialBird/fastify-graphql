@@ -17,7 +17,7 @@ export class UserType {
   birthday?: Date
 
   @Field()
-  isHappy!: boolean
+  is_happy!: boolean
 
   @Field(() => [DogType])
   dogs?: DogType[]
