@@ -43,6 +43,16 @@ exports.seed = async (knex) => {
   return knex('users')
     .insert(usersData)
     .then(() => {
+      return knex.raw(
+        "SELECT setval('users_id_seq', (SELECT MAX(id) from users))",
+      )
+    })
+    .then(() => {
       return knex('dogs').insert(dogsData)
+    })
+    .then(() => {
+      return knex.raw(
+        "SELECT setval('dogs_id_seq', (SELECT MAX(id) from dogs))",
+      )
     })
 }
