@@ -16,6 +16,7 @@ type DogType {
 
 type Query {
   user(id: Float!): UserType!
+  users(limit: Float, order: String): [UserType!]!
 }
 
 type UserType {

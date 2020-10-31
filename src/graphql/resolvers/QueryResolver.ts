@@ -14,4 +14,12 @@ export class QueryResolver {
   user(@Arg('id') id: number) {
     return this.userRepository.find(id)
   }
+
+  @Query(() => [UserType])
+  users(
+    @Arg('limit', { nullable: true }) limit?: number,
+    @Arg('order', { nullable: true }) order?: 'asc' | 'desc',
+  ) {
+    return this.userRepository.getList({ limit, order })
+  }
 }
