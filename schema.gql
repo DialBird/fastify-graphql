@@ -23,6 +23,7 @@ type DogType {
 
 type Mutation {
   createUser(params: CreateUserInput!): UserType!
+  deleteUser(id: Float!): Float!
   updateUser(id: Float!, params: UpdateUserInput!): UserType!
 }
 

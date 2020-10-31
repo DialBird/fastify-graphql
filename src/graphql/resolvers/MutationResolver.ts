@@ -28,4 +28,10 @@ export class MutationResolver {
     const updatedId = await this.userRepository.update(id, params)
     return this.userRepository.find(updatedId)
   }
+
+  @Mutation(() => Number)
+  async deleteUser(@Arg('id') id: number) {
+    const deletedId = await this.userRepository.delete(id)
+    return deletedId
+  }
 }

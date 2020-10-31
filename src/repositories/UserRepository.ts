@@ -47,4 +47,13 @@ export class UserRepository {
       .returning('id')
     return ids[0]
   }
+
+  async delete(id: number) {
+    const ids = await database
+      .pg<UserType>('users')
+      .where({ id })
+      .delete()
+      .returning('id')
+    return ids[0]
+  }
 }
