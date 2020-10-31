@@ -1,6 +1,6 @@
 import { UserType } from 'src/graphql/types/UserType'
 import { UserRepository } from 'src/repositories/UserRepository'
-import { Arg, Ctx, ID, Query, Resolver } from 'type-graphql'
+import { Arg, Query, Resolver } from 'type-graphql'
 
 @Resolver()
 export class QueryResolver {

@@ -3,6 +3,13 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input CreateUserInput {
+  age: Float!
+  birthday: DateTime
+  is_happy: Boolean!
+  name: String!
+}
+
 """
 The javascript `Date` as string. Type represents date and time as the ISO Date string.
 """
@@ -12,6 +19,10 @@ type DogType {
   id: ID!
   name: String!
   user_id: Float!
+}
+
+type Mutation {
+  createUser(params: CreateUserInput!): UserType!
 }
 
 type Query {
