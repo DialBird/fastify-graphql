@@ -1,21 +1,15 @@
 import knex from 'knex'
+// @ts-ignore
+import config from 'knexfile'
 
 class DatabaseService {
-  pg!: knex
+  db!: knex
 
   init() {
-    const pg = knex({
-      client: 'pg',
-      connection: {
-        host: 'localhost',
-        user: 'postgres',
-        port: 5555,
-        password: 'password',
-        database: 'postgres',
-      },
-    })
+    const db = knex(config.sqlite)
+    // const db = knex(config.pg)
 
-    this.pg = pg
+    this.db = db
   }
 }
 

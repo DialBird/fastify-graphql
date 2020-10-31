@@ -2,11 +2,11 @@ import { DogType } from 'src/graphql/types/DogType'
 import { database } from 'src/services/DatabaseService'
 
 export class DogRepository {
-  async getByUserId(userId: number) {
+  async getByUserId(user_id: number) {
     const res = await database
-      .pg<DogType>('dogs')
+      .db<DogType>('dogs')
       .select()
-      .where({ userId })
+      .where({ user_id })
       .first()
     return res
   }

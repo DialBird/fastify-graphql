@@ -1,7 +1,13 @@
 // Update with your config settings.
 
 module.exports = {
-  development: {
+  sqlite: {
+    client: 'sqlite3',
+    connection: {
+      filename: './mydb.sqlite',
+    },
+  },
+  pg: {
     client: 'pg',
     connection: {
       host: 'localhost',

@@ -13,7 +13,7 @@ export class UserRepository {
     limit?: number
     order?: 'asc' | 'desc'
   }) {
-    let query = database.pg<UserType>('users').select().orderBy('id', order)
+    let query = database.db<UserType>('users').select().orderBy('id', order)
     if (limit) {
       query.limit(limit)
     }
@@ -24,7 +24,7 @@ export class UserRepository {
 
   async find(id: number) {
     const res = await database
-      .pg<UserType>('users')
+      .db<UserType>('users')
       .select()
       .where({ id })
       .first()
@@ -33,7 +33,7 @@ export class UserRepository {
 
   async create(params: CreateUserInput) {
     const ids = await database
-      .pg<UserType>('users')
+      .db<UserType>('users')
       .insert(params)
       .returning('id')
     return ids[0]
@@ -41,7 +41,7 @@ export class UserRepository {
 
   async update(id: number, params: UpdateUserInput) {
     const ids = await database
-      .pg<UserType>('users')
+      .db<UserType>('users')
       .where({ id })
       .update(params)
       .returning('id')
@@ -50,7 +50,7 @@ export class UserRepository {
 
   async delete(id: number) {
     const ids = await database
-      .pg<UserType>('users')
+      .db<UserType>('users')
       .where({ id })
       .delete()
       .returning('id')
