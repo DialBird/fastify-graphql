@@ -17,6 +17,21 @@ export class CreateUserInput {
   is_happy!: boolean
 }
 
+@InputType()
+export class UpdateUserInput {
+  @Field({ nullable: true })
+  name?: string
+
+  @Field({ nullable: true })
+  age?: number
+
+  @Field({ nullable: true })
+  birthday?: Date
+
+  @Field({ nullable: true })
+  is_happy?: boolean
+}
+
 @ObjectType()
 export class UserType {
   @Field(() => ID)

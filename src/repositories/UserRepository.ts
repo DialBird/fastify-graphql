@@ -1,4 +1,8 @@
-import { CreateUserInput, UserType } from 'src/graphql/types/UserType'
+import {
+  CreateUserInput,
+  UpdateUserInput,
+  UserType,
+} from 'src/graphql/types/UserType'
 import { database } from 'src/services/DatabaseService'
 
 export class UserRepository {
@@ -31,6 +35,15 @@ export class UserRepository {
     const ids = await database
       .pg<UserType>('users')
       .insert(params)
+      .returning('id')
+    return ids[0]
+  }
+
+  async update(id: number, params: UpdateUserInput) {
+    const ids = await database
+      .pg<UserType>('users')
+      .where({ id })
+      .update(params)
       .returning('id')
     return ids[0]
   }

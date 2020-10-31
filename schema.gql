@@ -23,11 +23,19 @@ type DogType {
 
 type Mutation {
   createUser(params: CreateUserInput!): UserType!
+  updateUser(id: Float!, params: UpdateUserInput!): UserType!
 }
 
 type Query {
   user(id: Float!): UserType!
   users(limit: Float, order: String): [UserType!]!
+}
+
+input UpdateUserInput {
+  age: Float
+  birthday: DateTime
+  is_happy: Boolean
+  name: String
 }
 
 type UserType {
