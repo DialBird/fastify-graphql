@@ -1,42 +1,48 @@
-exports.seed = async (knex) => {
-  // Deletes ALL existing entries
-  // return knex('users')
-  //   .del()
-  //   .then(function () {
-  //     // Inserts seed entries
-  //     return knex('users').insert([
-  //       {
-  //         id: 1,
-  //         name: 'keisuke',
-  //         age: 12,
-  //         birthday: '1991/06/22',
-  //         is_happy: true,
-  //       },
-  //       { id: 2, name: 'tarou', age: 22, is_happy: false },
-  //       { id: 3, name: 'daisuke', age: 32, is_happy: true },
-  //     ])
-  //   })
+const faker = require('faker')
 
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * Math.floor(max))
+}
+
+exports.seed = async (knex) => {
   await knex('dogs').del()
   await knex('users').del()
 
+  const dogsData = []
+  let dogIdx = 1
+
+  const usersData = [
+    {
+      id: 1,
+      name: 'Keisuke Taniguchi',
+      age: 24,
+      birthday: '1991/06/22',
+      is_happy: true,
+    },
+  ]
+  for (let i = 0; i < 99; i++) {
+    const userId = i + 2
+    usersData.push({
+      id: userId,
+      name: faker.name.findName(),
+      age: (i % 10) + 20,
+      is_happy: i % 2 === 0,
+    })
+
+    const dogNum = getRandomInt(3)
+    for (let j = 0; j < dogNum; j++) {
+      dogsData.push({
+        id: dogIdx,
+        user_id: userId,
+        name: faker.name.firstName(),
+      })
+      dogIdx += 1
+    }
+  }
+
   return knex('users')
-    .insert([
-      {
-        id: 1,
-        name: 'keisuke',
-        age: 12,
-        birthday: '1991/06/22',
-        is_happy: true,
-      },
-      { id: 2, name: 'tarou', age: 22, is_happy: false },
-      { id: 3, name: 'daisuke', age: 32, is_happy: true },
-    ])
+    .insert(usersData)
     .then(() => {
-      return knex('dogs').insert([
-        { id: 1, user_id: 2, name: 'a' },
-        { id: 2, user_id: 3, name: 'b' },
-        { id: 3, user_id: 3, name: 'c' },
-      ])
+      return knex('dogs').insert(dogsData)
     })
 }
