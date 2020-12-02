@@ -1,6 +1,6 @@
 # fastify-graphql
 
 ```sh
-$ npm i
-$ npm run dev
+$ yarn
+$ yarn dev
 ```
