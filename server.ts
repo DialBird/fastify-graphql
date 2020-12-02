@@ -9,9 +9,9 @@ app.get('/', async () => 'ok')
 
 app.register(graphqlApp, { prefix: '/graphql', useSubscription: true })
 
-app.listen(3000, (err) => {
+app.listen(process.env.PORT || 3000, (err) => {
   if (err) {
-    app.log.error(err)
+    app.log.error(err.message)
     process.exit(1)
   }
 })
