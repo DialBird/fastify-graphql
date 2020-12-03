@@ -6,6 +6,13 @@ module.exports = {
     connection: {
       filename: './mydb.sqlite',
     },
+    migrations: {
+      directory: './migrations',
+      tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: './seeds',
+    },
   },
   pg: {
     client: 'pg',
